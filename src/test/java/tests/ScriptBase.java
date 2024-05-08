@@ -18,7 +18,7 @@ public class ScriptBase {
     static void launchBrowser(){
         pw = Playwright.create();
         browser = pw.chromium().
-                launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(800));
+                launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(200));
     }
 
     @BeforeEach
@@ -37,6 +37,7 @@ public class ScriptBase {
                 .setPath(Paths.get("traces" + testInfo.getDisplayName().replace(" ", "") + ".zip")));
 
         page.screenshot(new Page.ScreenshotOptions()
+                        .setFullPage(true)
                 .setPath(Paths.get("screenshot" + testInfo.getDisplayName().replace(" ", "") + ".png")));
 
         context.close();
