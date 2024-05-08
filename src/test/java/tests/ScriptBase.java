@@ -35,6 +35,10 @@ public class ScriptBase {
     void closeContext(TestInfo testInfo) {
         context.tracing().stop(new Tracing.StopOptions()
                 .setPath(Paths.get("traces" + testInfo.getDisplayName().replace(" ", "") + ".zip")));
+
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get("screenshot" + testInfo.getDisplayName().replace(" ", "") + ".png")));
+
         context.close();
     }
 

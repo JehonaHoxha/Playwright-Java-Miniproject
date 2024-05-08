@@ -13,6 +13,7 @@ public class TestWatcherExtension implements TestWatcher {
     @Override
     public void testSuccessful(ExtensionContext context) {
         deleteTraces(context);
+        deleteScreenshot(context);
     }
 
     private void deleteTraces(ExtensionContext context){
@@ -21,6 +22,15 @@ public class TestWatcherExtension implements TestWatcher {
             Files.deleteIfExists(tracePath);
         } catch (IOException e){
             System.out.println("Failed to delete the trace file with name " + tracePath.getFileName());
+        }
+    }
+
+    private void deleteScreenshot(ExtensionContext context){
+        Path screenshotPath = Paths.get("screenshot" + context.getDisplayName().replace(" ", "") + ".png");
+        try{
+            Files.deleteIfExists(screenshotPath);
+        } catch (IOException e){
+            System.out.println("Failed to delete the screenshot file with name " + screenshotPath.getFileName());
         }
     }
 }
