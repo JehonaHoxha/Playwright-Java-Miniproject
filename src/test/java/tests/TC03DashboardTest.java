@@ -49,14 +49,12 @@ class TC03DashboardTest extends ScriptBase {
         notebooksPage.selectDisplayDropdownValue(9);
 
         // Step 5: Verify that only 6 items are displayed
-        notebooksPage.waitForProductListToLoad();
         assertEquals(6, notebooksPage.getNumberOfDisplayedItems(), "Unexpected number of displayed items");
 
         // Step 6: On Filter by attributes, check 16GB
         notebooksPage.checkAttribute16GB();
 
         // Step 7: Verify that only 1 item is displayed
-        notebooksPage.waitForProductListToLoad();
         assertEquals(1, notebooksPage.getNumberOfDisplayedItems(), "Unexpected number of displayed items checking attribute 16GB");
 
         // Step 8: Uncheck the 16GB checkbox

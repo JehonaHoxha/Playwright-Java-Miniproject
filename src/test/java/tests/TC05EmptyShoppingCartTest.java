@@ -40,11 +40,10 @@ public class TC05EmptyShoppingCartTest extends ScriptBase {
         assertTrue(shoppingCartPage.isShoppingCartPageDisplayed(), "Did not navigate to Shopping Cart Page");
 
         // Step 1: Delete the first item on shopping cart &  Step 2: Verify that the number of elements in Shopping Cart table is decreased by 1
-        //ShoppingCartPage shoppingCartPage = new ShoppingCartPage(page);
-        int numberOfCartElements1 = shoppingCartPage.getNumberOfItemsInCart();
+        int initialNumberOfCartItems = shoppingCartPage.getNumberOfItemsInCart();
         shoppingCartPage.clickNthDeleteButton(1);
-        int numberOfCartElements2 = shoppingCartPage.getNumberOfItemsInCart();
-        assertEquals(numberOfCartElements1 - 1, numberOfCartElements2);
+        int numberOfCartItemsAfterDeletion = shoppingCartPage.getNumberOfItemsInCart();
+        assertEquals(initialNumberOfCartItems - 1, numberOfCartItemsAfterDeletion);
 
 
         // Step 3: Repeat steps 1&2 until the last item is deleted

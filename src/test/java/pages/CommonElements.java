@@ -26,6 +26,7 @@ public class CommonElements {
     }
 
     public boolean isGoToCartButtonDisplayed(){
+        page.waitForSelector(goToCartButtonLocator);
         return page.isVisible(goToCartButtonLocator);
     }
 

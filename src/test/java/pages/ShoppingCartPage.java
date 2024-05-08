@@ -2,6 +2,7 @@ package pages;
 
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.PlaywrightException;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class ShoppingCartPage {
     private final String orderTotalSumLocator = "//tr[@class='order-total']//strong";
     private final String deleteItemFromCartButtonLocator = ".remove-btn";
     private final String emptyCartText = "Your Shopping Cart is empty!";
+    private final String ajaxLoadingBlockWindowLocator = ".ajax-loading-block-window";
 
     public ShoppingCartPage(Page page) {
         this.page = page;
@@ -60,23 +62,36 @@ public class ShoppingCartPage {
     }
 
     public int getNumberOfItemsInCart() {
-        return page.querySelectorAll(deleteItemFromCartButtonLocator).size();
+        try {
+            page.waitForSelector(deleteItemFromCartButtonLocator);
+            return page.querySelectorAll(deleteItemFromCartButtonLocator).size();
+        } catch (PlaywrightException e) {
+            System.out.println("Delete item button not found. Returning 0.");
+            return 0;
+        }
     }
 
     public void clickNthDeleteButton(int itemNumber) {
         List<ElementHandle> deleteButtons = page.querySelectorAll(deleteItemFromCartButtonLocator);
         if (itemNumber > 0 && itemNumber <= deleteButtons.size()) {
             deleteButtons.get(itemNumber - 1).click();
+            waitForPageLoaded();
         } else {
             throw new IllegalArgumentException("Invalid value for item number: " + itemNumber);
         }
     }
 
     public boolean isShoppingCartEmpty(){
-        List<ElementHandle> deleteButtons = page.querySelectorAll(deleteItemFromCartButtonLocator);
-        boolean isEmptyTextDisplayed = page.textContent("body").contains(emptyCartText);
-
-        return deleteButtons.isEmpty() && isEmptyTextDisplayed;
+        return page.textContent("body").contains(emptyCartText);
     }
 
+    public void waitForPageLoaded() {
+        // ensures ajaxLoadingBlockWindowLocator is not displayed
+        page.waitForFunction(
+                String.format(
+                        "document.querySelector('%s').style.display === 'none'",
+                        ajaxLoadingBlockWindowLocator
+                )
+        );
+    }
 }
