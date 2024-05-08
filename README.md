@@ -11,7 +11,7 @@ This automation project aims to test the functionality of a website called "nopC
 
 - **Page Object Model (POM)**: The project follows the Page Object Model design pattern, which helps in organizing and maintaining the test code by separating the page elements and their interactions into individual classes.
 
-- **Screenshot Capture on Failure**: The project is configured to capture screenshots automatically whenever a test case fails. This helps in identifying the cause of test failures and debugging issues more effectively.
+- **Traces & Screenshot Capture on Failure**: The project is configured to capture screenshots automatically whenever a test case fails. This helps in identifying the cause of test failures and debugging issues more effectively.
 
 ## Getting Started
 
