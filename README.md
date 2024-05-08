@@ -29,10 +29,6 @@ To use this project, follow these steps:
 - Junit
 - Any other dependencies or libraries specified in the project's build configuration file (pom.xml)
 
-## Usage
-
-To run the automated test cases, execute the test scripts provided in the project using your preferred testing framework or tool (e.g., JUnit, TestNG).
-
 ## Contributing
 
 Contributions to this project are welcome! If you encounter any issues, have suggestions for improvements, or want to add new features, feel free to submit a pull request or open an issue on GitHub.
