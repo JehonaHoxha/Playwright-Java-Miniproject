@@ -18,7 +18,7 @@ public class ScriptBase {
     static void launchBrowser(){
         pw = Playwright.create();
         browser = pw.chromium().
-                launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(200));
+                launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
     }
 
     @BeforeEach

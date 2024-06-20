@@ -7,6 +7,9 @@ public class CommonElements {
     public String logoutMenuLocator = "a[class='ico-logout']";
     public String shoppingCartMenuLocator = ".ico-cart";
     public String goToCartButtonLocator = "button[class='button-1 cart-button']";
+    public String searchBarLocator = "#small-searchterms";
+    public String submitSearchButton = "button[class='button-1 search-box-button']";
+
 
     public CommonElements(Page page) {
         this.page = page;
@@ -32,5 +35,17 @@ public class CommonElements {
 
     public void clickGoToCartButton() {
         page.click(goToCartButtonLocator);
+    }
+
+    public void clickSearchBar(){
+        page.click(searchBarLocator);
+    }
+
+    public void fillSearchBar (String text){
+        page.fill(searchBarLocator, text);
+    }
+
+    public void clickSubmitSearchButton (){
+        page.click(submitSearchButton);
     }
 }

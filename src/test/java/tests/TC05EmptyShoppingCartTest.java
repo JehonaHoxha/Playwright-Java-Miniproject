@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TC05EmptyShoppingCartTest extends ScriptBase {
     String siteUrl = "https://demo.nopcommerce.com/";
-    String email = "test12jh@gmail.com";
+    String email = "test121jh@gmail.com";
     String password = "dummyPassword";
 
     @Test

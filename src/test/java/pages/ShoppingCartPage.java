@@ -63,6 +63,7 @@ public class ShoppingCartPage {
 
     public int getNumberOfItemsInCart() {
         try {
+            waitForPageLoaded();
             page.waitForSelector(deleteItemFromCartButtonLocator);
             return page.querySelectorAll(deleteItemFromCartButtonLocator).size();
         } catch (PlaywrightException e) {

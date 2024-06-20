@@ -10,9 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TC02LoginTest extends ScriptBase {
     String siteUrl = "https://demo.nopcommerce.com/";
-    String email = "test12jh@gmail.com";
+    String email = "test121jh@gmail.com";
     String password = "dummyPassword";
     String welcomeMessage = "Welcome to our store";
+    String textSearch = "apple";
 
     @Test
     @DisplayName("Login Test")
@@ -36,6 +37,12 @@ public class TC02LoginTest extends ScriptBase {
         assertTrue(page.isVisible(commonElements.logoutMenuLocator), "Login was not successful: Logout menu is not shown.");
 
         // Step 5: Log out
-        commonElements.clickLogoutMenu();
+       // commonElements.clickLogoutMenu();
+        commonElements.clickSearchBar();
+        commonElements.fillSearchBar(textSearch);
+        commonElements.clickSubmitSearchButton();
+
+
+
     }
 }

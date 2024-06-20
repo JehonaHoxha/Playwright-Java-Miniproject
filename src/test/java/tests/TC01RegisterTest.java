@@ -18,7 +18,7 @@ public class TC01RegisterTest extends ScriptBase {
     Integer birthDay = 20;
     Integer birthMonth = 5;
     Integer birthYear = 2000;
-    String email = "test12jh@gmail.com";
+    String email = "test121jh@gmail.com";
     String companyName = "test 123";
     String password = "dummyPassword";
 

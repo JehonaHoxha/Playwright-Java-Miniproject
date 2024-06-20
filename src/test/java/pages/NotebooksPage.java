@@ -17,7 +17,7 @@ public class NotebooksPage {
     private final String wishlistButtonsLocator = "button[title='Add to wishlist']";
     private final String addedToWishlistSuccessText = "The product has been added to your wishlist";
     private final String addToCartButtonsLocator = "//button[contains(text(), 'Add to cart')]";
-    private final String addedToShoppingCartSuccessText = "The product has been added to your"; // shopping cart";
+    private final String addedToShoppingCartSuccessText = "The product has been added to your shopping cart";
     private final String successBarLocator = "#bar-notification";
     private final String closeSuccessBarButton = ".close";
     private final String wishlistItemCountLocator = ".ico-wishlist .wishlist-qty";
@@ -53,9 +53,23 @@ public class NotebooksPage {
         page.waitForSelector(productListLocator);
     }
 
-    public void selectDisplayDropdownValue(Integer value) {
-        page.selectOption(productsPerPageDropdownSelector, String.valueOf(value));
-        waitForPageLoaded();
+    public void waitForDisplayDropdown() {
+        try{
+            page.waitForSelector(productsPerPageDropdownSelector);
+        } catch (PlaywrightException e){
+            System.out.println("Dropdown was not found");
+        }
+    }
+
+    public void selectDisplayDropdownValue(Integer dropdownValue) {
+        try{
+            waitForDisplayDropdown();
+            String dropdownValueAsString = Integer.toString(dropdownValue);
+            page.selectOption(productsPerPageDropdownSelector, dropdownValueAsString);
+            waitForPageLoaded();
+        } catch (PlaywrightException e){
+            System.out.println("Dropdown was not selected");
+        }
     }
 
     public int getNumberOfDisplayedItems() {
@@ -115,8 +129,17 @@ public class NotebooksPage {
         page.querySelectorAll(addToCartButtonsLocator).get(itemNumber - 1).click();
     }
 
+//    public boolean isAddToCartSuccessNotificationDisplayed() {
+//        return page.textContent("body").contains(addedToShoppingCartSuccessText);
+//    }
+
     public boolean isAddToCartSuccessNotificationDisplayed() {
-        return page.textContent("body").contains(addedToShoppingCartSuccessText);
+        try {
+            page.waitForFunction("document.body.textContent.includes('" + addedToShoppingCartSuccessText + "')");
+            return true;
+        } catch (PlaywrightException e) {
+            return false;
+        }
     }
 
     public String getWishlistItemCount() {
