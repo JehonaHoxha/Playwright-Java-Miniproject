@@ -29,9 +29,9 @@ public class RegisterPage {
         page.waitForSelector(femaleRadioButtonLocator);
         page.waitForSelector(firstNameInputLocator);
         page.waitForSelector(lastNameInputLocator);
-        page.waitForSelector(dateOfBirthDropdownLocator);
-        page.waitForSelector(monthOfBirthDropdownLocator);
-        page.waitForSelector(yearOfBirthDropdownLocator);
+        // page.waitForSelector(dateOfBirthDropdownLocator);
+        // page.waitForSelector(monthOfBirthDropdownLocator);
+        // page.waitForSelector(yearOfBirthDropdownLocator);
         page.waitForSelector(emailInputLocator);
         page.waitForSelector(companyInputLocator);
         page.waitForSelector(newslettersCheckboxLocator);
