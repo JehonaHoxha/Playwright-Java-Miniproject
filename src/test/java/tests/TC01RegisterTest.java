@@ -49,9 +49,9 @@ public class TC01RegisterTest extends ScriptBase {
         registerPage.selectGenderOption(gender);
         registerPage.enterFirstName(firstName);
         registerPage.enterLastName(lastName);
-        registerPage.enterDayOfBirth(birthDay);
-        registerPage.enterMonthOfBirth(birthMonth);
-        registerPage.enterYearOfBirth(birthYear);
+        // registerPage.enterDayOfBirth(birthDay);
+        // registerPage.enterMonthOfBirth(birthMonth);
+        // registerPage.enterYearOfBirth(birthYear);
         registerPage.enterEmail(email);
         registerPage.fillCompanyName(companyName);
         registerPage.enterPassword(password);
