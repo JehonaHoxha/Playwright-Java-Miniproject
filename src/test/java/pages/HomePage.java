@@ -7,7 +7,7 @@ public class HomePage {
     private final String logoLocator = ".header-logo img";
     private final String searchBoxLocator = "#small-searchterms";
     private final String navigationMenuLocator = ".header-menu";
-    private final String sliderProductsLocator = "#nivo-slider";
+    private final String sliderProductsLocator = ".swiper-wrapper";
     private final String computersMenuLocator = "a[href='/computers']";
     private final String notebooksMenuLocator = "a[href='/notebooks']";
 
